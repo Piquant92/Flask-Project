@@ -18,12 +18,12 @@
 <table border=1 width=100%>
 <tr>
   
-  <td colspan="2" > <img src="https://github.com/Piquant92/Flask-Project/blob/master/README/1.jpg?raw=true"/>  </td>
+  <td colspan="2" > <img src="https://github.com/Piquant92/Flask-Project/blob/master/README/space.jpg?raw=true"/>  </td>
   
 </tr>
   
 <tr>
-  <td> <img src="https://github.com/majustory/DjangoProject/blob/master/readme/1.JPG?raw=true"/>  </td>
+  <td> <img src="https://github.com/Piquant92/Flask-Project/blob/master/README/1.jpg?raw=true"/>  </td>
   
   <td> <img src="https://github.com/Piquant92/Flask-Project/blob/master/README/2.jpg?raw=true"/>  </td>
 </tr>  
