@@ -1,0 +1,84 @@
+{% include 'top.html' %}
+
+
+<section>
+  <br>
+    <div align="center">
+      <h2> Board 목록 보기 </h2>
+      <h3>
+        [총 {{ total_count }} 명]
+        [총 {{ total_page }} 페이지]
+        [현재 {{ now_page }} 페이지]
+      </h3>
+
+      <table border="1">
+      <tr align="center">
+        <td> 번호 </td>
+        <td> 이름 </td>
+        <td> 제목 </td>
+        <td> 조회수(d) </td>
+      </tr>
+
+        {% for row in rows %}
+        <tr align="center">
+          <td> {{ row['idx'] }}  </td>
+          <td>
+            <a href=" {{ url_for('board_bp.board_edit', idx = row['idx'], ch1 = request.args.get('ch1'), ch2 = request.args.get('ch2')) }}">
+            {{ row['sname'] }}
+            </a>
+          </td>
+          <td> {{ row['title'] }} </td>
+          <td>
+            <a href=" {{ url_for('board_bp.board_delete', idx = row['idx'], ch1 = request.args.get('ch1'), ch2 = request.args.get('ch2')) }}">
+            {{ row['cnt'] }}
+            </a>
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+
+      {% if start_idx > now_page %}
+      <a href ="{{ url_for('board_bp.board_list', start_idx=1, ch1 = request.args.get('ch1'), ch2 = request.args.get('ch2') ) }}"> 처음 </a>
+      {% else %}
+      [처음]
+      {% endif %}
+
+      &emsp;
+      {% if start_idx > 9 %}
+      <a href="{{ url_for('board_bp.board_list', start_idx=start_idx-10, ch1 = request.args.get('ch1'), ch2 = request.args.get('ch2')) }}"> [이전] </a>
+      {% else %}
+      [이전]
+      {% endif %}
+
+      &emsp;
+      <a href="/board/board_form.html"> 글 쓰 기 </a>
+
+      &emsp;
+      {% if now_page < total_page %}
+      <a href="{{ url_for('board_bp.board_list', start_idx=start_idx+10, ch1 = request.args.get('ch1'), ch2 = request.args.get('ch2')) }}"> [다음] </a>
+      {% else %}
+      [다음]
+      {% endif %}
+
+      &emsp;
+      {% if now_page < total_page %}
+      <a href ="{{ url_for('board_bp.board_list', start_idx=(total_page-1)*page_size, ch1 = request.args.get('ch1'), ch2 = request.args.get('ch2')) }}"> 마지막 </a>
+      {% else %}
+      [마지막]
+      {% endif %}
+
+      <form action="/board/board_list">
+        <select name="ch1">
+          <option value="sname"> 이름 </option>
+          <option value="title"> 제목 </option>
+        </select>
+        <input type="text" name="ch2">
+        <input type="submit" value="검색">
+      </form>
+
+    </div>
+  <br>
+</section>
+
+
+{% include 'bottom.html' %}

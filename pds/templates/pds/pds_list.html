@@ -1,0 +1,48 @@
+{% include 'top.html' %}
+
+
+<section>
+  <br>
+    <div align="center">
+      <h2> PDS 목록 보기 </h2>
+
+      <table border="1">
+      <tr align="center">
+        <td> 번호 </td>
+        <td> 이름 </td>
+        <td> 제목 </td>
+        <td> 파일명 </td>
+        <td> 이미지 </td>
+        <td> 내용 </td>
+        <td> 조회수(d) </td>
+      </tr>
+
+        {% for row in rows %}
+        <tr align="center">
+          <td> {{ row['idx'] }} </td>
+          <td>
+            <a href="{{ url_for('pds_bp.pds_update', idx=row['idx'], files = row['files']) }}">
+            {{ row['sname'] }}
+            </a>
+          </td>
+          <td> {{ row['title'] }} </td>
+          <td> {{ row['files'] }} </td>
+          <td>
+            <img src="{{ url_for('static', filename='/pds/files/' ~ row['files'])}}" width="80">
+          </td>
+          <td>{{ row['content'] }} </td>
+          <td>
+            <a href="{{ url_for('pds_bp.pds_delete', idx=row['idx'], files = row['files']) }}">
+            {{ row['cnt'] }}
+            </a>
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+      <a href="/pds/pds_form"> PDS 글작성 </a>
+    </div>
+  <br>
+</section>
+
+
+{% include 'bottom.html' %}

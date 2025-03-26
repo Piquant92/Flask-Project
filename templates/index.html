@@ -1,0 +1,23 @@
+{% include 'top.html' %}
+
+
+<section>
+  <br>
+    <div align="center">
+      <h2> Flask Project_Piquant </h2>
+      <img src="{{ url_for('static', filename='/img/space.jpg') }}"
+            width="300" height="300" >
+
+      <br><br>
+      <a href="/board/board_insert"> Record 등록(100) </a>
+      <br>
+      <a href="/pds/pds_list"> 자료실 </a>
+      <br>
+      <a href="/yolo"> Yolo8 </a>
+      <br>
+    </div>
+  <br>
+</section>
+
+
+{% include 'bottom.html' %}
